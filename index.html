@@ -40,30 +40,38 @@
         
         /* 상단 버튼들 */
         .top-buttons {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            display: flex;
+            justify-content: center;
             gap: 12px;
             margin-bottom: 50px;
-            max-width: 800px;
+            max-width: fit-content;
             margin-left: auto;
             margin-right: auto;
         }
         
         .top-btn {
-            padding: 15px 10px;
+            padding: 15px 25px;
             background: #E7E7E7;
             border: none;
             border-radius: 8px;
-            font-size: 0.9em;
+            font-size: 1em;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             color: #333;
-            display: block;
+            display: inline-block;
             text-align: center;
             font-family: 'Noto Sans KR', sans-serif;
             white-space: nowrap;
+        }
+        
+        .top-btn.small {
+            font-size: 1.25em;
+        }
+        
+        .top-btn.large {
+            font-size: 1em;
         }
         
         @media (max-width: 1024px) {
@@ -254,11 +262,11 @@
         
         <!-- 상단 버튼들 -->
         <div class="top-buttons">
-            <button class="top-btn" onclick="openMethod()">방법</button>
-            <a href="전체파일.zip" class="top-btn" download>전체파일 다운로드</a>
-            <a href="https://terms.naver.com/list.naver?cid=60207&categoryId=60207" class="top-btn" target="_blank">네이버 수학백과</a>
-            <a href="https://mid.ebs.co.kr/premium/middle/index?learning" class="top-btn" target="_blank">EBS</a>
-            <a href="https://ebsmath.co.kr/" class="top-btn" target="_blank">EBS math</a>
+            <button class="top-btn small" onclick="openMethod()">방법</button>
+            <a href="전체파일.zip" class="top-btn large" download>전체파일 다운로드</a>
+            <a href="https://terms.naver.com/list.naver?cid=60207&categoryId=60207" class="top-btn large" target="_blank">네이버 수학백과</a>
+            <a href="https://mid.ebs.co.kr/premium/middle/index?learning" class="top-btn small" target="_blank">EBS</a>
+            <a href="https://ebsmath.co.kr/" class="top-btn small" target="_blank">EBS math</a>
         </div>
         
         <!-- 과목 카드들 -->
