@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>중학교 1~3학년 수학 정리 노트 만들기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,14 +13,21 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', Arial, sans-serif;
-            background: #f5f5f5;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #ffffff;
+            background-image: 
+                radial-gradient(circle, #e0e0e0 1px, transparent 1px);
+            background-size: 20px 20px;
             padding: 40px 20px;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
         
         h1 {
@@ -27,6 +35,7 @@
             font-size: 2.5em;
             margin-bottom: 40px;
             color: #333;
+            font-weight: 700;
         }
         
         /* 상단 버튼들 */
@@ -40,113 +49,145 @@
         
         .top-btn {
             padding: 15px 30px;
-            background: #d0d0d0;
+            background: #E7E7E7;
             border: none;
             border-radius: 8px;
             font-size: 1.1em;
-            font-weight: bold;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
             color: #333;
             display: inline-block;
+            font-family: 'Noto Sans KR', sans-serif;
         }
         
         .top-btn:hover {
-            background: #b0b0b0;
+            background: #d0d0d0;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
         /* 과목 카드들 */
         .subject-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin-bottom: 50px;
         }
         
         .subject-card {
             position: relative;
-            height: 150px;
-            border-radius: 12px;
+            height: 180px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .subject-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .subject-card:hover {
+            transform: translateY(-5px);
         }
         
-        .subject-card .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 15px;
-            font-size: 1.3em;
-            font-weight: bold;
+        .subject-card .content {
+            position: relative;
+            z-index: 2;
             text-align: center;
+            color: white;
         }
         
-        /* 임시 배경색 (이미지 없을 때) */
-        .subject-card.number { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .subject-card.algebra { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .subject-card.function { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        .subject-card.geometry { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-        .subject-card.statistics { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .subject-card .icon {
+            font-size: 4em;
+            margin-bottom: 10px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+        }
+        
+        .subject-card .label {
+            font-size: 1.4em;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 각 과목별 배경 */
+        .subject-card.number { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .subject-card.algebra { 
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .subject-card.function { 
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .subject-card.geometry { 
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        .subject-card.statistics { 
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
         
         /* 다운로드 버튼 그리드 */
         .download-section {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
         
         .download-column {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
         
         .download-btn {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 15px 20px;
-            background: #b3d9ff;
+            gap: 12px;
+            padding: 16px 20px;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1em;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
-            color: #333;
+            color: white;
+            font-family: 'Noto Sans KR', sans-serif;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
-        .download-btn:hover {
-            background: #99ccff;
-            transform: translateY(-2px);
+        .download-btn:hover:not(.disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .download-btn.list {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .download-btn.notebook {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .download-btn.tablet {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
         
         .download-btn.disabled {
-            background: #e0e0e0;
+            background: linear-gradient(135deg, #e0e0e0 0%, #c0c0c0 100%);
             cursor: not-allowed;
-            color: #999;
-        }
-        
-        .download-btn.disabled:hover {
-            transform: none;
+            color: #888;
         }
         
         .status-dot {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
             flex-shrink: 0;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         .status-dot.available {
@@ -161,8 +202,9 @@
             text-align: center;
             margin-top: 60px;
             padding: 20px;
-            color: #666;
-            font-size: 0.9em;
+            color: #e0e0e0;
+            font-size: 0.85em;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -182,19 +224,34 @@
         <!-- 과목 카드들 -->
         <div class="subject-cards">
             <div class="subject-card number">
-                <div class="overlay">수와 연산</div>
+                <div class="content">
+                    <div class="icon">🔢</div>
+                    <div class="label">수와 연산</div>
+                </div>
             </div>
             <div class="subject-card algebra">
-                <div class="overlay">문자와 식</div>
+                <div class="content">
+                    <div class="icon">📝</div>
+                    <div class="label">문자와 식</div>
+                </div>
             </div>
             <div class="subject-card function">
-                <div class="overlay">함수</div>
+                <div class="content">
+                    <div class="icon">📈</div>
+                    <div class="label">함수</div>
+                </div>
             </div>
             <div class="subject-card geometry">
-                <div class="overlay">기하</div>
+                <div class="content">
+                    <div class="icon">📐</div>
+                    <div class="label">기하</div>
+                </div>
             </div>
             <div class="subject-card statistics">
-                <div class="overlay">확률과 통계</div>
+                <div class="content">
+                    <div class="icon">🎲</div>
+                    <div class="label">확률과 통계</div>
+                </div>
             </div>
         </div>
         
@@ -202,15 +259,15 @@
         <div class="download-section">
             <!-- 수와 연산 -->
             <div class="download-column">
-                <a href="수와 연산_목록.pdf" class="download-btn" download>
+                <a href="수와 연산_목록.pdf" class="download-btn list" download>
                     <span class="status-dot available"></span>
                     목록
                 </a>
-                <a href="수와 연산_노트용.pdf" class="download-btn" download>
+                <a href="수와 연산_노트용.pdf" class="download-btn notebook" download>
                     <span class="status-dot available"></span>
                     노트용
                 </a>
-                <div class="download-btn disabled">
+                <div class="download-btn tablet disabled">
                     <span class="status-dot unavailable"></span>
                     태블릿용
                 </div>
@@ -218,15 +275,15 @@
             
             <!-- 문자와 식 -->
             <div class="download-column">
-                <a href="문자와 식_목록.pdf" class="download-btn" download>
+                <a href="문자와 식_목록.pdf" class="download-btn list" download>
                     <span class="status-dot available"></span>
                     목록
                 </a>
-                <div class="download-btn disabled">
+                <div class="download-btn notebook disabled">
                     <span class="status-dot unavailable"></span>
                     노트용
                 </div>
-                <div class="download-btn disabled">
+                <div class="download-btn tablet disabled">
                     <span class="status-dot unavailable"></span>
                     태블릿용
                 </div>
@@ -234,15 +291,15 @@
             
             <!-- 함수 -->
             <div class="download-column">
-                <div class="download-btn disabled">
+                <div class="download-btn list disabled">
                     <span class="status-dot unavailable"></span>
                     목록
                 </div>
-                <div class="download-btn disabled">
+                <div class="download-btn notebook disabled">
                     <span class="status-dot unavailable"></span>
                     노트용
                 </div>
-                <div class="download-btn disabled">
+                <div class="download-btn tablet disabled">
                     <span class="status-dot unavailable"></span>
                     태블릿용
                 </div>
@@ -250,15 +307,15 @@
             
             <!-- 기하 -->
             <div class="download-column">
-                <div class="download-btn disabled">
+                <div class="download-btn list disabled">
                     <span class="status-dot unavailable"></span>
                     목록
                 </div>
-                <div class="download-btn disabled">
+                <div class="download-btn notebook disabled">
                     <span class="status-dot unavailable"></span>
                     노트용
                 </div>
-                <div class="download-btn disabled">
+                <div class="download-btn tablet disabled">
                     <span class="status-dot unavailable"></span>
                     태블릿용
                 </div>
@@ -266,15 +323,15 @@
             
             <!-- 확률과 통계 -->
             <div class="download-column">
-                <div class="download-btn disabled">
+                <div class="download-btn list disabled">
                     <span class="status-dot unavailable"></span>
                     목록
                 </div>
-                <div class="download-btn disabled">
+                <div class="download-btn notebook disabled">
                     <span class="status-dot unavailable"></span>
                     노트용
                 </div>
-                <div class="download-btn disabled">
+                <div class="download-btn tablet disabled">
                     <span class="status-dot unavailable"></span>
                     태블릿용
                 </div>
@@ -282,7 +339,7 @@
         </div>
         
         <footer>
-            <p>모든 자료는 학습 목적으로 제공됩니다</p>
+            <p>인선썜</p>
         </footer>
     </div>
     
