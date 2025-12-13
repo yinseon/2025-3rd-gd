@@ -50,7 +50,7 @@
         }
         
         .top-btn {
-            padding: 15px 25px;
+            padding: 10px 25px;
             background: #E7E7E7;
             border: none;
             border-radius: 8px;
@@ -60,10 +60,12 @@
             transition: all 0.3s;
             text-decoration: none;
             color: #333;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
             font-family: 'Noto Sans KR', sans-serif;
-            white-space: nowrap;
+            line-height: 1.4;
         }
         
         .top-btn.small {
@@ -263,8 +265,8 @@
         <!-- 상단 버튼들 -->
         <div class="top-buttons">
             <button class="top-btn small" onclick="openMethod()">방법</button>
-            <a href="전체파일.zip" class="top-btn large" download>전체파일 다운로드</a>
-            <a href="https://terms.naver.com/list.naver?cid=60207&categoryId=60207" class="top-btn large" target="_blank">네이버 수학백과</a>
+            <a href="전체파일.zip" class="top-btn large" download>전체파일<br>다운로드</a>
+            <a href="https://terms.naver.com/list.naver?cid=60207&categoryId=60207" class="top-btn large" target="_blank">네이버<br>수학백과</a>
             <a href="https://mid.ebs.co.kr/premium/middle/index?learning" class="top-btn small" target="_blank">EBS</a>
             <a href="https://ebsmath.co.kr/" class="top-btn small" target="_blank">EBS math</a>
         </div>
