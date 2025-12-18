@@ -74,6 +74,13 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
+        .top-btn.disabled {
+            background: #d0d0d0;
+            cursor: not-allowed;
+            color: #999;
+            pointer-events: none;
+        }
+        
         .top-btn.small {
             font-size: 1.25em;
         }
@@ -316,7 +323,7 @@
         <!-- 상단 버튼들 -->
         <div class="top-buttons">
             <a href="수학정리노트 만드는 방법.pdf" class="top-btn small" download>방법</a>
-            <a href="전체파일.zip" class="top-btn large" download>전체파일<br>다운로드</a>
+            <div class="top-btn large disabled">전체파일<br>다운로드</div>
             <a href="https://terms.naver.com/list.naver?cid=60207&categoryId=60207" class="top-btn large" target="_blank">네이버<br>수학백과</a>
             <a href="https://www.ebs.co.kr/" class="top-btn small" target="_blank">EBS</a>
             <a href="https://ebsmath.co.kr/" class="top-btn small" target="_blank">EBS math</a>
