@@ -73,20 +73,10 @@
             text-align: center;
         }
         
-        .top-btn:hover {
-            background: #d0d0d0;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .top-btn.disabled {
-            background: #d0d0d0;
-            cursor: not-allowed;
-            color: #999;
-            pointer-events: none;
-        }
+        .top-btn:hover { background: #d0d0d0; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+        .top-btn.disabled { background: #d0d0d0; cursor: not-allowed; color: #999; pointer-events: none; }
 
-        /* 과목 카드 스타일 */
+        /* 과목 카드 기본 스타일 */
         .subject-cards {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
@@ -105,14 +95,15 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            overflow: visible !important; /* 말풍선 표시 필수 설정 */
+            overflow: visible !important;
         }
         
-        .subject-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* 모든 과목 카드에 '요약보기' 말풍선 적용 (PC 전용) */
+        .subject-card:hover { transform: translateY(-5px); }
+        .subject-card .content { text-align: center; color: white; }
+        .subject-card .icon { font-size: 3em; margin-bottom: 8px; }
+        .subject-card .label { font-size: 1.1em; font-weight: 700; }
+
+        /* 요약보기 말풍선 (PC 전용) */
         @media (min-width: 1025px) {
             .subject-card:hover::before {
                 content: "요약보기";
@@ -130,8 +121,6 @@
                 z-index: 9999;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             }
-            
-            /* 말풍선 꼬리표 */
             .subject-card:hover::after {
                 content: "";
                 position: absolute;
@@ -145,40 +134,21 @@
             }
         }
         
-        .subject-card .content {
-            text-align: center;
-            color: white;
-        }
-        
-        .subject-card .icon {
-            font-size: 3em;
-            margin-bottom: 8px;
-        }
-        
-        .subject-card .label {
-            font-size: 1.1em;
-            font-weight: 700;
-        }
-
-        /* 과목 배경색 */
+        /* 과목 색상 */
         .subject-card.number { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
         .subject-card.algebra { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
         .subject-card.function { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
         .subject-card.geometry { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
         .subject-card.statistics { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
         
-        /* 다운로드 버튼 영역 */
+        /* PC용 다운로드 버튼 영역 */
         .download-section {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 15px;
         }
         
-        .download-column {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+        .download-column { display: flex; flex-direction: column; gap: 12px; }
         
         .download-btn {
             display: flex;
@@ -203,24 +173,20 @@
         .status-dot.available { background: #4caf50; }
         .status-dot.unavailable { background: #f44336; }
 
-        /* 모바일 대응 */
+        /* 모바일 대응 설정 */
         .mobile-grid { display: none; }
         
         @media (max-width: 1024px) {
             h1 { font-size: 1.5em; }
             .top-buttons { display: grid; grid-template-columns: repeat(2, 1fr); width: 100%; }
-            .subject-cards, .download-section { display: none; }
-            .mobile-grid { display: flex; flex-direction: column; gap: 20px; }
-            .mobile-item { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+            .subject-cards, .download-section { display: none; } /* PC버전 숨김 */
+            .mobile-grid { display: flex; flex-direction: column; gap: 30px; } /* 모바일버전 표시 */
+            .mobile-item { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+            .mobile-item:last-child { border-bottom: none; }
             .subject-card { height: 140px; }
         }
         
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            font-size: 0.85em;
-        }
+        footer { text-align: center; margin-top: 40px; padding: 20px; font-size: 0.85em; }
         .signature { color: #e0e0e0; margin-top: 10px; }
     </style>
 </head>
@@ -238,36 +204,11 @@
         </div>
         
         <div class="subject-cards">
-            <a href="02-수와 연산/수와 연산 요약.pdf" class="subject-card number" download>
-                <div class="content">
-                    <div class="icon">🔢</div>
-                    <div class="label">수와 연산</div>
-                </div>
-            </a>
-            <a href="03-문자와 식/문자와 식 요약.pdf" class="subject-card algebra" download>
-                <div class="content">
-                    <div class="icon">📝</div>
-                    <div class="label">문자와 식</div>
-                </div>
-            </a>
-            <a href="04-함수/함수 요약.pdf" class="subject-card function" download>
-                <div class="content">
-                    <div class="icon">📈</div>
-                    <div class="label">함수</div>
-                </div>
-            </a>
-            <a href="05-기하/기하 요약.pdf" class="subject-card geometry" download>
-                <div class="content">
-                    <div class="icon">📐</div>
-                    <div class="label">기하</div>
-                </div>
-            </a>
-            <a href="06-확률과 통계/확률과 통계 요약.pdf" class="subject-card statistics" download>
-                <div class="content">
-                    <div class="icon">🎲</div>
-                    <div class="label">확률과 통계</div>
-                </div>
-            </a>
+            <a href="02-수와 연산/수와 연산 요약.pdf" class="subject-card number" download><div class="content"><div class="icon">🔢</div><div class="label">수와 연산</div></div></a>
+            <a href="03-문자와 식/문자와 식 요약.pdf" class="subject-card algebra" download><div class="content"><div class="icon">📝</div><div class="label">문자와 식</div></div></a>
+            <a href="04-함수/함수 요약.pdf" class="subject-card function" download><div class="content"><div class="icon">📈</div><div class="label">함수</div></div></a>
+            <a href="05-기하/기하 요약.pdf" class="subject-card geometry" download><div class="content"><div class="icon">📐</div><div class="label">기하</div></div></a>
+            <a href="06-확률과 통계/확률과 통계 요약.pdf" class="subject-card statistics" download><div class="content"><div class="icon">🎲</div><div class="label">확률과 통계</div></div></a>
         </div>
         
         <div class="download-section">
@@ -300,15 +241,41 @@
         
         <div class="mobile-grid">
             <div class="mobile-item">
-                <a href="02-수와 연산/수와 연산 요약.pdf" class="subject-card number" download>
-                    <div class="content"><div class="icon">🔢</div><div class="label">수와 연산</div></div>
-                </a>
+                <a href="02-수와 연산/수와 연산 요약.pdf" class="subject-card number" download><div class="content"><div class="icon">🔢</div><div class="label">수와 연산</div></div></a>
                 <div class="download-column">
                     <a href="02-수와 연산/수와 연산_목록.pdf" class="download-btn list" download>목록</a>
                     <a href="02-수와 연산/수와 연산_노트.pdf" class="download-btn notebook" download>노트</a>
                 </div>
             </div>
+            <div class="mobile-item">
+                <a href="03-문자와 식/문자와 식 요약.pdf" class="subject-card algebra" download><div class="content"><div class="icon">📝</div><div class="label">문자와 식</div></div></a>
+                <div class="download-column">
+                    <a href="03-문자와 식/문자와 식_목록.pdf" class="download-btn list" download>목록</a>
+                    <a href="03-문자와 식/문자와 식_노트.pdf" class="download-btn notebook" download>노트</a>
+                </div>
             </div>
+            <div class="mobile-item">
+                <a href="04-함수/함수 요약.pdf" class="subject-card function" download><div class="content"><div class="icon">📈</div><div class="label">함수</div></div></a>
+                <div class="download-column">
+                    <a href="04-함수/함수_목록.pdf" class="download-btn list" download>목록</a>
+                    <a href="04-함수/함수_노트.pdf" class="download-btn notebook" download>노트</a>
+                </div>
+            </div>
+            <div class="mobile-item">
+                <a href="05-기하/기하 요약.pdf" class="subject-card geometry" download><div class="content"><div class="icon">📐</div><div class="label">기하</div></div></a>
+                <div class="download-column">
+                    <div class="download-btn list disabled">목록</div>
+                    <div class="download-btn notebook disabled">노트</div>
+                </div>
+            </div>
+            <div class="mobile-item">
+                <a href="06-확률과 통계/확률과 통계 요약.pdf" class="subject-card statistics" download><div class="content"><div class="icon">🎲</div><div class="label">확률과 통계</div></div></a>
+                <div class="download-column">
+                    <div class="download-btn list disabled">목록</div>
+                    <div class="download-btn notebook disabled">노트</div>
+                </div>
+            </div>
+        </div>
         
         <footer>
             <p class="copyright-notice">저작권 안내: 개인 학습용으로만 사용하세요!</p>
