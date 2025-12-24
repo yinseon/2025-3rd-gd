@@ -105,22 +105,22 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            /* overflow: hidden 삭제 - 말풍선 가림 방지 */
+            overflow: visible !important; /* 말풍선 표시 필수 설정 */
         }
         
         .subject-card:hover {
             transform: translateY(-5px);
         }
         
-        /* 요약보기 말풍선 (PC 전용) */
+        /* 모든 과목 카드에 '요약보기' 말풍선 적용 (PC 전용) */
         @media (min-width: 1025px) {
-            .subject-card.number:hover::before {
+            .subject-card:hover::before {
                 content: "요약보기";
                 position: absolute;
-                top: -45px; /* 카드 위로 배치 */
+                top: -45px;
                 left: 50%;
                 transform: translateX(-50%);
-                background: #222; /* 확실하게 보이는 검은색 */
+                background: #222;
                 color: #fff;
                 padding: 8px 15px;
                 border-radius: 6px;
@@ -132,7 +132,7 @@
             }
             
             /* 말풍선 꼬리표 */
-            .subject-card.number:hover::after {
+            .subject-card:hover::after {
                 content: "";
                 position: absolute;
                 top: -10px;
@@ -244,10 +244,30 @@
                     <div class="label">수와 연산</div>
                 </div>
             </a>
-            <div class="subject-card algebra"><div class="content"><div class="icon">📝</div><div class="label">문자와 식</div></div></div>
-            <div class="subject-card function"><div class="content"><div class="icon">📈</div><div class="label">함수</div></div></div>
-            <div class="subject-card geometry"><div class="content"><div class="icon">📐</div><div class="label">기하</div></div></div>
-            <div class="subject-card statistics"><div class="content"><div class="icon">🎲</div><div class="label">확률과 통계</div></div></div>
+            <a href="03-문자와 식/문자와 식 요약.pdf" class="subject-card algebra" download>
+                <div class="content">
+                    <div class="icon">📝</div>
+                    <div class="label">문자와 식</div>
+                </div>
+            </a>
+            <a href="04-함수/함수 요약.pdf" class="subject-card function" download>
+                <div class="content">
+                    <div class="icon">📈</div>
+                    <div class="label">함수</div>
+                </div>
+            </a>
+            <a href="05-기하/기하 요약.pdf" class="subject-card geometry" download>
+                <div class="content">
+                    <div class="icon">📐</div>
+                    <div class="label">기하</div>
+                </div>
+            </a>
+            <a href="06-확률과 통계/확률과 통계 요약.pdf" class="subject-card statistics" download>
+                <div class="content">
+                    <div class="icon">🎲</div>
+                    <div class="label">확률과 통계</div>
+                </div>
+            </a>
         </div>
         
         <div class="download-section">
@@ -288,7 +308,7 @@
                     <a href="02-수와 연산/수와 연산_노트.pdf" class="download-btn notebook" download>노트</a>
                 </div>
             </div>
-        </div>
+            </div>
         
         <footer>
             <p class="copyright-notice">저작권 안내: 개인 학습용으로만 사용하세요!</p>
