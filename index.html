@@ -78,7 +78,7 @@
         
         .top-btn:hover {
             background: #d0d0d0;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
         
@@ -91,6 +91,20 @@
         
         .top-btn.small {
             font-size: 1.25em;
+        }
+        
+        .top-btn.small:first-child {
+            animation: neon-glow 1.5s ease-in-out infinite alternate;
+            box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+        }
+        
+        @keyframes neon-glow {
+            0% {
+                box-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700;
+            }
+            100% {
+                box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #FFD700;
+            }
         }
         
         .top-btn.large {
@@ -110,7 +124,7 @@
             position: relative;
             height: 140px;
             border-radius: 16px;
-            overflow: hidden;
+            overflow: visible;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
             display: flex;
@@ -125,13 +139,13 @@
         }
         
         .subject-card.clickable:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         .subject-card.clickable:hover::after {
             content: '요약보기';
             position: absolute;
-            top: -35px;
+            top: -45px;
             left: 50%;
             transform: translateX(-50%);
             background: white;
@@ -141,11 +155,27 @@
             font-size: 0.85em;
             font-weight: 500;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            border: 1px solid #999;
             white-space: nowrap;
+            z-index: 2;
+        }
+        
+        .subject-card.clickable:hover::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #999;
+            z-index: 1;
         }
         
         .subject-card:not(.clickable):hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
         .subject-card .content {
@@ -215,7 +245,7 @@
         }
         
         .download-btn:hover:not(.disabled) {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
         
@@ -320,6 +350,11 @@
             .subject-card {
                 height: 146px;
                 grid-row: span 3;
+            }
+            
+            /* 모바일에서는 툴팁 숨김 */
+            .subject-card.clickable:hover::after {
+                display: none;
             }
             
             .subject-card .icon {
